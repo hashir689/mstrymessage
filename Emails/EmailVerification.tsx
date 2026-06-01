@@ -1,13 +1,16 @@
 import * as React from "react";
 
 interface EmailTemplateProps {
-  firstName: string;
+  username: string;
+  otp: string;
 }
 
-export function EmailTemplate({ firstName }: EmailTemplateProps) {
+export function EmailTemplate({ username, otp }: EmailTemplateProps) {
   return (
     <div>
-      <h1>Welcome, {firstName}!</h1>
+      <h1>
+        Welcome {username} to Mstry Message! your OTP is {otp}
+      </h1>
     </div>
   );
 }
