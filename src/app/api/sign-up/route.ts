@@ -2,7 +2,6 @@ import dbConnection from "@/lib/dbConnect";
 import UserModel from "@/model/User";
 import bcrypt from "bcryptjs";
 import { sendVerficationEmail } from "@/helper/sendVerificationEmail";
-import { success } from "zod";
 
 export async function POST(request: Request) {
   await dbConnection();
@@ -22,7 +21,7 @@ export async function POST(request: Request) {
       );
     }
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const existingEmail = await UserModel.findOne({ email, isVerified: true });
+    const existingEmail = await UserModel.findOne({ email });
     if (existingEmail) {
       if (existingEmail.isVerified) {
         return Response.json(
@@ -71,7 +70,7 @@ export async function POST(request: Request) {
     }
     return Response.json(
       {
-        Success: true,
+        success: true,
         message: "User register Successfuly, Please Verify your email",
       },
       { status: 200 },
