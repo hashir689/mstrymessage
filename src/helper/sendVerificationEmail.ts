@@ -2,8 +2,6 @@ import { resend } from "@/lib/resend";
 import { EmailTemplate } from "../../Emails/EmailVerification";
 import { ApiResponse } from "@/types/ApiResponse";
 
-import { fa } from "zod/locales";
-
 export async function sendVerficationEmail(
   email: string,
   username: string,
