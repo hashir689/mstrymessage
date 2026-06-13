@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     return Response.json(
       {
         success: false,
-        message: "Methid not allowed",
+        message: "Method not allowed",
       },
       { status: 405 },
     );
@@ -20,10 +20,12 @@ export async function GET(request: Request) {
   await dbConnection();
   try {
     const { searchParams } = new URL(request.url);
+
     const queryParam = {
       // this is syntax it always hold object
       username: searchParams.get("username"),
     };
+
     //validate with zod
     const result = UsernameQuerySchema.safeParse(queryParam);
 
