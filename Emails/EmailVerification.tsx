@@ -9,7 +9,7 @@ export function EmailTemplate({ username, otp }: EmailTemplateProps) {
   return (
     <div>
       <h1>
-        Welcome {username} to Mstry Message! your OTP is {otp}
+        Welcome {username} to Mystery Message! your OTP is {otp}
       </h1>
     </div>
   );
