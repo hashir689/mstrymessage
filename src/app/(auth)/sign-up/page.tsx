@@ -29,7 +29,7 @@ const page = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const debounced = useDebounceCallback(setUsername, 500);
   const router = useRouter();
-  const form = useForm({
+  const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: "",
@@ -65,7 +65,7 @@ const page = () => {
       router.replace(`/verify/${username}`);
       setIsSubmitting(false);
     } catch (error) {
-      toast("Sign up Failed", { position: "bottom-left" });
+      toast("Sign up Failed", { position: "bottom-right" });
       setIsSubmitting(false);
     }
   };
